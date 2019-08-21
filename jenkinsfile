@@ -1,4 +1,4 @@
-node("any") {
+node("docker") {
     docker.withRegistry('https://cloud.docker.com/u/jamescarl20190101/repository/docker/jamescarl20190101/test-fullstacksys', 'Dockerhub') {
     
         git url: "https://github.com/jamescarl20190101/firstBuild", credentialsId: 'Github'
