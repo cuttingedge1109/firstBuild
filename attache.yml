@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: attache
+  namespace: test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: attache-server
+    spec:
+      containers:
+        - name: attache
+          image: attache/attache:latest
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "250m"
+            requests:
+              memory: "1Gi"
+              cpu: "250m"
+          ports:
+            - containerPort: 5000
+
