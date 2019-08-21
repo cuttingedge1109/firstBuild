@@ -28,8 +28,7 @@ podTemplate(label: 'mypod', containers: [
 
         stage('do some kubectl work') {
             container('kubectl') {
-                git https://github.com/jamescarl20190101/firstBuild
-
+                git 'https://github.com/jamescarl20190101/firstBuild'
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', 
                         credentialsId: 'Dockerhub',
                         usernameVariable: 'DOCKER_HUB_USER',
