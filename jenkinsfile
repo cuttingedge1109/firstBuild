@@ -35,11 +35,8 @@ podTemplate(label: 'mypod', containers: [
                         usernameVariable: 'DOCKER_HUB_USER',
                         passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     
-                    sh """                        
-                        cd firstBuild
-                        kubectl get nodes
-                        kubectl apply -f attache.yml
-                        kubectl apply -f attache-service.yml
+                    sh """                                                
+                        kubectl get nodes                        
                         """
                 }
             }
