@@ -1,5 +1,21 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent {
+        kubernetes {
+        label "pipeline-java"
+        yaml """
+kind: Pod
+metadata:
+name: jenkins-slave
+spec:
+containers:
+- name: java-pipeline
+    image: maven:3.3.3
+    imagePullPolicy: Always
+    tty: true                    
+restartPolicy: Never                
+"""
+        }
+    }
     stages {
         stage('build') {
             steps {
