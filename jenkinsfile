@@ -29,14 +29,16 @@ podTemplate(label: 'mypod', containers: [
         stage('do some kubectl work') {
             container('kubectl') {
                 git 'https://github.com/jamescarl20190101/firstBuild'
-                kubectl apply -f attache.yml
-                kubectl apply -f attache-service.yml
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', 
                         credentialsId: 'Dockerhub',
                         usernameVariable: 'DOCKER_HUB_USER',
                         passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     
-                    sh "kubectl get nodes"
+                    sh """
+                        kubectl get nodes
+                        kubectl apply -f attache.yml
+                        kubectl apply -f attache-service.yml
+                        """
                 }
             }
         }
