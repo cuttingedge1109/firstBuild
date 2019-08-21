@@ -5,14 +5,15 @@ pipeline {
         yaml """
 kind: Pod
 metadata:
-name: jenkins-slave
+  name: jenkins-slave
 spec:
-containers:
-- name: java-pipeline
+  containers:
+  - args: 
+    - name: java-pipeline
     image: maven:3.3.3
     imagePullPolicy: Always
     tty: true                    
-restartPolicy: Never                
+  restartPolicy: Never                
 """
         }
     }
