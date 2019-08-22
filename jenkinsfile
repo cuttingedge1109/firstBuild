@@ -34,7 +34,8 @@ podTemplate(label: 'mypod', containers: [
                         usernameVariable: 'DOCKER_HUB_USER',
                         passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     
-                    sh """                                                
+                    sh """
+                        yum install -y git
                         kubectl get nodes                        
                         """
                 }
