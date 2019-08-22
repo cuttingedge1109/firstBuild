@@ -40,8 +40,8 @@ podTemplate(label: 'mypod', containers: [
                         cd firstBuild
                         ls
                         kubectl get nodes                        
-                        kubectl apply -f attache.yml
-                        kubectl apply -f attache-service.yml
+                        kubectl apply -f ./attache.yml
+                        kubectl apply -f ./attache-service.yml
                         """
                 }
             }
