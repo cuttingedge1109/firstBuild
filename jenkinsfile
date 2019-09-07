@@ -24,7 +24,7 @@ podTemplate(label: 'mypod', containers: [
                     sh "docker push ${env.DOCKER_HUB_USER}/ubuntu:${env.BUILD_NUMBER} "
                 }
             }
-        }
+        } 
 
         stage('do some kubectl work') {
             container('kubectl') {                
