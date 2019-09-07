@@ -39,7 +39,7 @@ podTemplate(label: 'mypod', containers: [
                         ls
                         cd firstBuild
                         ls
-                        kubectl get nodes
+                        kubectl get all -n jenkins
                         kubectl version
                         kubectl apply -f ./attache.yml
                         kubectl apply -f ./attache-service.yml
