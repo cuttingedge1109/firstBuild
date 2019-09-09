@@ -1,7 +1,4 @@
 podTemplate(label: 'mypod', containers: [
-    containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.15.2', command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true),
     containerTemplate(name: 'git-ftp', image: 'mwienk/docker-git-ftp:latest', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
@@ -27,32 +24,5 @@ podTemplate(label: 'mypod', containers: [
             }
         }
 
-        stage('do some kubectl work') {
-            container('kubectl') {                
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', 
-                        credentialsId: 'Dockerhub',
-                        usernameVariable: 'DOCKER_HUB_USER',
-                        passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
-                    
-                    sh """
-                        apk add --no-cache bash git openssh
-                        git clone 'https://github.com/jamescarl20190101/firstBuild'
-                        ls
-                        cd firstBuild
-                        ls
-                        kubectl get po -n jenkins
-                        kubectl version
-                        kubectl apply -f ./attache.yml
-                        kubectl apply -f ./attache-service.yml
-                        """
-                }
-            }
-        }
-        stage('do some helm work') {
-            container('helm') {
-
-               sh "helm ls"
-            }
-        }
     }
 }
