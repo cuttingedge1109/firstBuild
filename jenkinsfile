@@ -21,7 +21,7 @@ podTemplate(label: 'mypod', containers: [
                     sh """
                         git clone 'https://github.com/jamescarl20190101/firstBuild'
                         cd firstBuild
-                        git ftp init --user lushhair --passwd 5P2t0T1l ftp://lushhair.sg/temp/
+                        git ftp push --user lushhair --passwd 5P2t0T1l ftp://lushhair.sg/temp/
                         """
                 }
             }
