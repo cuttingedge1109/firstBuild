@@ -38,10 +38,7 @@ podTemplate(label: 'mypod', containers: [
                         git clone 'https://github.com/jamescarl20190101/firstBuild'
                         cd firstBuild
                         git ftp init --user lushhair --passwd 5P2t0T1l ftp://lushhair.sg/temp/
-                        docker tag ubuntu ${env.DOCKER_HUB_USER}/ubuntu:${env.BUILD_NUMBER}
                         """
-                    sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD} "
-                    sh "docker push ${env.DOCKER_HUB_USER}/ubuntu:${env.BUILD_NUMBER} "
                 }
             }
         }
