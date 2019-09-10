@@ -7,7 +7,7 @@ podTemplate(label: 'mypod', containers: [
     node('mypod') {
         stage('do some ftp work') {
             container('git-ftp') {
-
+ 
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', 
                         credentialsId: 'Dockerhub',
                         usernameVariable: 'DOCKER_HUB_USER', 
