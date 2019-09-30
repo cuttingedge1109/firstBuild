@@ -8,17 +8,13 @@ podTemplate(label: 'mypod', containers: [
         stage('do some ftp work') {
             container('git-ftp') {
  
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', 
-                        credentialsId: 'Dockerhub',
-                        usernameVariable: 'DOCKER_HUB_USER', 
-                        passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
-                    
+                
                     sh """
                         git clone 'https://github.com/jamescarl20190101/firstBuild'
                         cd firstBuild
                         git ftp push --user lushhair --passwd 5P2t0T1l ftp://lushhair.sg/temp/
                         """
-                }
+              
             }
         }
 
